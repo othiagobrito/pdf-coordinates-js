@@ -1,10 +1,13 @@
 const input = document.getElementById('file');
 const send = document.getElementById('send-btn');
+const result = document.getElementById('result');
 
 send.addEventListener('click', async () => {
     if (! input.files.length) {
         return;
     }
+
+    result.innerHTML = '';
 
     const file = input.files[0];
     const path = (window.URL || window.webkitURL).createObjectURL(file);
@@ -30,7 +33,7 @@ send.addEventListener('click', async () => {
 
                     ! (item?.str?.trim()) || [
                         pagesCoordinates.push(json),
-                        document.getElementById('result').innerHTML += JSON.stringify(json, undefined, 2),
+                        result.innerHTML += JSON.stringify(json, undefined, 2),
                     ];
                 });
             });
