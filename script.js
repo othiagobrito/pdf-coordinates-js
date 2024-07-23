@@ -23,12 +23,16 @@ send.addEventListener('click', async () => {
             pdf.getPage(pageNumber).then(async function (page) {
                 const viewport = await page.getViewport({ scale: 1 });
                 const content = await page.getTextContent();
+                console.log(content);
     
                 content?.items?.forEach(item => {
                     const json = {
                         txt: item?.str,
                         x: item?.transform[4] * permanent / dpi,
                         y: (viewport.height - item?.height - item?.transform[5]) * permanent / dpi,
+                        font: {
+                            size: item?.height,
+                        },
                     };
 
                     ! (item?.str?.trim()) || [
