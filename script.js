@@ -28,8 +28,8 @@ send.addEventListener('click', async () => {
                 content?.items?.forEach(item => {
                     const json = {
                         txt: item?.str,
-                        x: item?.transform[4] * permanent / dpi,
-                        y: (viewport.height - item?.height - item?.transform[5]) * permanent / dpi,
+                        x: (item?.transform[4] - 2.5) * permanent / dpi,
+                        y: (viewport.height - item?.height + 1.45 - item?.transform[5]) * permanent / dpi,
                         font: {
                             size: item?.height,
                         },
